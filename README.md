@@ -1,19 +1,3 @@
 # test
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![grafik](https://user-images.githubusercontent.com/66371497/229311949-720deb31-6aaa-4e44-8cd4-ec4c58a6b5f3.png)
