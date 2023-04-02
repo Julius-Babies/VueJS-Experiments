@@ -26,13 +26,10 @@
 
 </template>
 
-<script>
-import md5 from "crypto-js/md5"
-import sha1 from "crypto-js/sha1"
-import sha256 from "crypto-js/sha256"
-import sha512 from "crypto-js/sha512"
-import aes from "crypto-js/aes"
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+import * as CryptoJS from 'crypto-js';
+export default defineComponent({
     name: "Crypto",
     data() {
         return {
@@ -48,17 +45,17 @@ export default {
     },
     methods: {
         hash() {
-            this.text.md5 = md5(this.text.input)
-            this.text.sha1 = sha1(this.text.input)
-            this.text.sha256 = sha256(this.text.input)
-            this.text.sha512 = sha512(this.text.input)
-            this.text.aes = aes.encrypt(this.text.input, "Cat").toString()
+            this.text.md5 = CryptoJS.MD5(this.text.input).toString()
+            this.text.sha1 = CryptoJS.SHA1(this.text.input).toString()
+            this.text.sha256 = CryptoJS.SHA256(this.text.input).toString()
+            this.text.sha512 = CryptoJS.SHA512(this.text.input).toString()
+            this.text.aes = CryptoJS.AES.encrypt(this.text.input, "Cat").toString()
         }
     },
     mounted() {
         this.hash()
     }
-}
+})
 </script>
 
 <style scoped>

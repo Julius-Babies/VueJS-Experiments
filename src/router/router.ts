@@ -1,11 +1,11 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import Home from '../views/Home.vue'
+import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
+import Home from "@/views/Home.vue";
 import About from "@/views/About.vue";
-import E404 from "@/views/E404.vue";
 import Weather from "@/views/Weather.vue";
+import E404 from "@/views/E404.vue";
 import Crypto from "@/views/Crypto.vue";
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',

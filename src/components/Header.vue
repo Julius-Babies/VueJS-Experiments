@@ -1,8 +1,8 @@
 <template>
     <div class="header">
         <router-link to="/" @mouseleave="hideTooltip" @mousemove="showTooltip">{{ this.$props.site }}</router-link>
-        <router-link :to="{name: 'about', params: {lang: 'de'}}" @mouseenter="moveToAbout">About me (DE)</router-link>
-        <router-link :to="{name: 'about', params: {lang: 'en'}}" @mouseenter="moveToAbout">About me (EN)</router-link>
+        <router-link :to="{name: 'about', params: {lang: 'de'}}">About me (DE)</router-link>
+        <router-link :to="{name: 'about', params: {lang: 'en'}}">About me (EN)</router-link>
         <router-link to="/weather">Weather</router-link>
         <router-link :to="{name: 'crypto'}">Crypto</router-link>
         <router-link to="/this-page-doesnt-exist">Error 404 page</router-link>
@@ -10,19 +10,20 @@
     <div class="tooltip" v-show="tooltipVisible">Dieser Wert ({{ this.$props.site }}) wurde per Vue injiziert.<br>Außerdem ist dieser Tooltip auch per Vue gesteuert.</div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default defineComponent({
     name: "Header",
     props: ["site"],
     data() {
         return {
             tooltipVisible: false,
-            top: "0px",
-            left: "0px"
+            left: "0",
+            top: "0"
         }
     },
     methods: {
-        showTooltip(e) {
+        showTooltip(e: MouseEvent) {
             this.left = e.clientX+5 + "px"
             this.top = e.clientY+5 + "px"
             this.tooltipVisible = true
@@ -30,14 +31,9 @@ export default {
 
         hideTooltip() {
             this.tooltipVisible = false
-        },
-
-
-        moveToAbout() {
-
         }
     }
-}
+})
 </script>
 
 <style scoped>
