@@ -8,7 +8,11 @@
         <h1>{{ greeting }}</h1>
         <div id="greeting">
             <input placeholder="Your Name" type="text" ref="name"><br>
-            <button @click="greet">Greeting</button>
+            <p><button @click="greet">Greeting</button></p>
+            <div v-if="name === ''">
+                You've never entered your name before. Enter your name to save it.
+            </div>
+            <button v-else @click="deleteName">Namen löschen</button>
         </div>
         <p @click="goToAbout">Go to About</p>
     </div>
@@ -19,15 +23,30 @@ export default {
     name: "Home",
     data() {
         return {
-            greeting: "Hi, Vue!"
+            greeting: "Hello, " + (localStorage.name === "" ? "Vue" : localStorage.name),
+            name: localStorage.name
         }
     },
     methods: {
         greet() {
             this.greeting = "Hi, " + this.$refs.name.value + "!"
+            let wasUnset = localStorage.name === ""
+            localStorage.name = this.$refs.name.value
+            if (wasUnset) {
+                this.$router.go()
+            }
         },
         goToAbout() {
             this.$router.push("/about")
+        },
+        deleteName() {
+            localStorage.name = ""
+            this.$router.go()
+        }
+    },
+    mounted() {
+        if (localStorage.name === undefined) {
+            localStorage.name = ""
         }
     }
 }

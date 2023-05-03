@@ -3,7 +3,7 @@
         <div id="backdrop">
             <span>This site was created for experimental purposes to learn Vue.JS 3.</span><br>
             <hr />
-            <span>2023 • <a :href="github" target="_blank">Julius Babies</a></span>
+            <span>2023 • <a :href="home" target="_blank">Julius Babies</a></span>
         </div>
     </div>
 </template>
@@ -13,7 +13,7 @@ export default {
     name: "Footer",
     data() {
         return {
-            github: "https://github.com/Julius-Babies"
+            home: "https://julius.familie-babies.de"
         }
     }
 }
